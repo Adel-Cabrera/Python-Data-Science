@@ -2,7 +2,7 @@
 
 [Repl.it Python excercises](https://repl.it/@AdelCabrera/Python-For-Data-Science "Link to Repl.it")
 
-## Links to the challenges
+## Links to challenges
 
 [Python challenge 1](https://empieza.desafiolatam.com/cohorts/375/challenges/2680 "challenge1")
 
