@@ -4,7 +4,6 @@ random_choices = ["stone", "scissor", "paper"]
 cpu_pick = random.choice(random_choices)
 replay = True
 
-
 while replay:
   choice = input(f"Choose between {random_choices} \n")
   if not (choice.lower() in random_choices):
