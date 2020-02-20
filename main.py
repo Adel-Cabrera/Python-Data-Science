@@ -32,6 +32,17 @@ print(type(df["region"]))
 print(df["region"].value_counts())
 print(df["region"].value_counts().mean())
 
+from desafios import Ex11_API_Prueba as ex11
+
+url = 'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=100&page=1&api_key='
+api_key = 'LxiLXqbPbbACk2VrKaeiisyDTa5c8xfiqg2P7anJ'
+
+
+resp = ex11.request(url, api_key)
+ex11.build_web_page(resp)
+ex11.photos_count(resp)
+
+
 """
 from desafios import Ex1_escape
 from desafios import Ex2_rentabilidad
@@ -39,6 +50,7 @@ from desafios import Ex3_ppt
 from desafios import Ex4_mayor_de_tres
 from desafios import Ex5_desafios
 from desafios import Ex6_funciones
+
 
 from desafios import Ex7_funciones_y_listas as ex7
 
