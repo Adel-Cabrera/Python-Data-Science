@@ -97,15 +97,35 @@ def zip_vel_dis(array_one, array_two):
   vel_avg = vel/len(array_one) # 15.4
   dis_avg = dis/len(array_two) # 42.98
 
-  
-
   low_vel = []
   low_vel_over_dis = []
   over_vel = []
   over_vel_over_dis = []
 
+
+  counter = 0
+
   for element in zip(array_one, array_two):
-    total_zip.append(element)
-  
-  print(total_zip)
-  
+    print(f"{array_one[counter]} - {array_two[counter]}")
+    
+    if(array_one[counter] < vel_avg and array_two[counter] >= dis_avg):
+      low_vel_over_dis.append(element)
+      counter += 1
+    elif(array_one[counter] >= vel_avg and array_two[counter] < dis_avg):
+      over_vel_over_dis.append(element)
+      counter += 1
+    elif(array_one[counter] < vel_avg):
+      low_vel.append(element)
+      counter += 1
+    elif(array_one[counter] >= vel_avg):
+      over_vel.append(element)
+      counter += 1
+
+    result = dict()
+    result["low_vel"] = low_vel
+    result["low_vel_over_dis"] = low_vel_over_dis
+    result["over_vel"] = over_vel
+    result["over_vel_over_dis"] = over_vel_over_dis
+ 
+  return result
+
