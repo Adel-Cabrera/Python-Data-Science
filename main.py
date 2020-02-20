@@ -1,5 +1,37 @@
 # No funciona from desafios import * , opr lo que lo haré manualmente
 # Para ejecutar el cóódigo, remover todas las comillas triples
+
+import pandas as pd
+
+#DataFrame => df
+
+my_file = 'nations.csv'
+
+df = pd.read_csv(my_file)
+
+print(pd.read_csv(my_file))
+print(df.shape) # Ver filas y columnas
+print(df.head()) # 5 primeras líneas del documento
+print(df.head(2)) # Primeras 2 lííneas
+df = df.drop(columns = "Unnamed: 0") # Editar Dataframe
+print(df.head())
+
+print(df.loc[8, "life"])
+print(type(df.loc[8, "life"])) # => float
+
+df_subset = df.reindex(["gdp", "school", "adfert", "chidmort"])
+print(type(df_subset))
+print(df_subset)
+
+# https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#deprecate-loc-reindex-listlike
+
+# Series
+
+print(df["region"]) # => columna (key, value)
+print(type(df["region"]))
+print(df["region"].value_counts())
+print(df["region"].value_counts().mean())
+
 """
 from desafios import Ex1_escape
 from desafios import Ex2_rentabilidad
@@ -7,7 +39,6 @@ from desafios import Ex3_ppt
 from desafios import Ex4_mayor_de_tres
 from desafios import Ex5_desafios
 from desafios import Ex6_funciones
-"""
 
 from desafios import Ex7_funciones_y_listas as ex7
 
@@ -43,3 +74,5 @@ velocidad_dos = [4, 4, 7, 7, 8, 9, 10, 10, 10,11, 11, 12, 12, 12, 12, 13, 13,13,
 distancia_dos = [2, 10, 4, 22, 16, 10, 18, 26, 34,17, 28, 14, 20, 24, 28, 26, 34, 34,46, 26, 36, 60, 80, 20, 26, 54, 32,40, 32, 40, 50, 42, 56, 76, 84, 36,46, 68, 32, 48, 52, 56, 64, 66, 54,70, 92, 93, 120, 85]
 
 print(ex7.zip_vel_dis(velocidad_dos, distancia_dos))
+
+"""
