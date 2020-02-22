@@ -3,7 +3,6 @@
 
 import pandas as pd
 
-"""
 
 
 #DataFrame => df
@@ -22,9 +21,36 @@ print(df.head())
 print(df.loc[8, "life"])
 print(type(df.loc[8, "life"])) # => float
 
-df_subset = df.reindex(["gdp", "school", "adfert", "chidmort"])
+df_subset = df.loc[:, ["gdp", "school"]]
+
 print(type(df_subset))
 print(df_subset)
+print(df["gdp"].isnull().sum()) # => 15
+df_gdp_nan = df[df["gdp"].isnull() == True] # => Devuelve el dataframe
+print(df_gdp_nan)
+
+# Iterar data frame
+
+for i in df: # => no sirve
+  print(i)
+
+for i, element in enumerate(df): # => no sirve
+  print(i, element)
+
+
+# Iterar con iteritems
+
+for colname, serie in df.iteritems():
+  print(colname)
+  print(serie)
+  break
+
+print("*" * 20)
+
+
+for colname, serie in df.iteritems():
+  tmp = pd.api.types.is_numeric_dtype(serie)
+  print("{} es {}".format(colname, tmp))
 
 # https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#deprecate-loc-reindex-listlike
 
@@ -34,7 +60,6 @@ print(df["region"]) # => columna (key, value)
 print(type(df["region"]))
 print(df["region"].value_counts())
 print(df["region"].value_counts().mean())
-"""
 
 
 

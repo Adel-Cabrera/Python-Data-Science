@@ -5,6 +5,9 @@ df = pd.read_csv('athlete_events.csv')
 ejercicio_1 = df.shape
 
 print(df.loc[:, 'Games'])
+print(df.loc[:, ['Games', 'NOC']])
+print(df.loc[:, 'Games':'Season'])
+
 
 ejercicio_2 = df['Games'].unique().size
 
