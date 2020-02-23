@@ -1,6 +1,11 @@
 # No funciona from desafios import * , opr lo que lo haré manualmente
 # Para ejecutar el cóódigo, remover todas las comillas triples
 
+"""
+  Pandas
+"""
+
+
 import pandas as pd
 
 
@@ -29,6 +34,16 @@ print(df["gdp"].isnull().sum()) # => 15
 df_gdp_nan = df[df["gdp"].isnull() == True] # => Devuelve el dataframe
 print(df_gdp_nan)
 
+# Series
+
+print(df["region"]) # => columna (key, value)
+print(type(df["region"]))
+print(df["region"].value_counts())
+print(df["region"].value_counts().mean())
+
+
+
+
 # Iterar data frame
 
 for i in df: # => no sirve
@@ -38,7 +53,7 @@ for i, element in enumerate(df): # => no sirve
   print(i, element)
 
 
-# Iterar con iteritems
+# Iterar con iteritems => columnas
 
 for colname, serie in df.iteritems():
   print(colname)
@@ -52,14 +67,115 @@ for colname, serie in df.iteritems():
   tmp = pd.api.types.is_numeric_dtype(serie)
   print("{} es {}".format(colname, tmp))
 
-# https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#deprecate-loc-reindex-listlike
 
-# Series
+# Iterar con iterrows => filas
 
-print(df["region"]) # => columna (key, value)
-print(type(df["region"]))
-print(df["region"].value_counts())
-print(df["region"].value_counts().mean())
+for index, row_serie in df.iterrows():
+  print(index)
+  print(row_serie)
+  print(type(row_serie))
+  break
+
+
+"""
+  Numpy
+"""
+
+import numpy as np
+
+numpy_array = np.array([2,4,12])
+print(type(numpy_array))
+
+multiplicados_array = numpy_array * 3
+print(multiplicados_array)
+print(multiplicados_array.shape)
+print(multiplicados_array.dtype)
+
+
+# ejemplo lista python a lista numpy 
+
+# generamos un array de 1000000 observaciones con `np.arange`
+n_sims = 1000000
+demo_array = np.arange(n_sims)
+## generamos un objeto range y posteriormente lo pasamos a formato lista
+demo_list = list(range(n_sims))
+# print(demo_list) => NO EJECUTAR
+
+## ndarray
+demo_array_2 = demo_array * 2
+print(demo_array)
+
+# Convertir dataframe a ndarray
+
+print(type(df.values))
+print(type(df["gdp"].values))
+
+datos_aleatorios = np.random.randn(4,4)
+print(datos_aleatorios)
+print(type(datos_aleatorios))
+
+# Indexing & slicing en arrays vectoriales
+
+secuencia = np.arange(10)
+print(secuencia[3])
+print(secuencia[0:10])
+subsecuencia = secuencia[5:8]
+subsecuencia[0] = 1234
+print(subsecuencia)
+print(secuencia)
+
+matrix = np.array([[0,1,2],[3,4,5],[6,7,8]])
+print(matrix[2][1])
+
+
+# Slice en array ndimensionales
+
+print(matrix[:2])
+print(matrix[:2, 1:]) # => dede el primer ííndice [1] del elemento
+print(matrix[0, 1:]) # => dede el primer ííndice [1] del elemento
+
+
+# Indexación booleana
+
+
+nombres = np.array(["Sebastián", "Pedro", "María", "Fernanda"])
+notas = np.array([[5,5,6], [6,6,7], [7,7,6], [5,4,6]])
+
+print(nombres=="Pedro")
+
+print(notas[nombres == "Pedro"])
+
+print(notas[np.array([False, True, False, False])])
+
+print(notas[~(nombres=="Pedro")])
+
+
+# Transposicionamiento de arrays
+
+array_30 = np.arange(30)
+
+print(array_30)
+
+redimensionado = array_30.reshape(5,6)
+
+print(redimensionado)
+
+print(redimensionado.T)
+
+
+# Funciones universales
+
+array_functions = np.array([2,  9, 16, 25])
+print(np.sqrt(array_functions))
+
+
+# Operador ternario
+
+notas_dos = np.array([4.5, 6.6, 7.0, 7.0, 2.0, 3.6, 4.6, 5.6, 5.8, 2.5])
+notas_bin = np.where(notas_dos >= notas_dos.mean(), 1, 0)
+print(notas_bin)
+print(notas_dos.mean())
+
 
 
 
